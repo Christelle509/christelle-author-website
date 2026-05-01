@@ -108,96 +108,46 @@ function scrollToSection(sectionId) {
 
   window.scrollTo({ top: top, behavior: 'smooth' });
 }
-
-
 // ---------------------------------------------------------------
-// SECTION 4: COMMENT FORM SUBMISSION
-// Validates required fields, adds the comment to the page,
-// clears the form, and shows a success message.
+// SECTION 4: COMMENT FORM SUBMISSION TO WHATSAPP
+// Opens WhatsApp with the reader's comment prepared.
 // ---------------------------------------------------------------
 
-const commentForm  = document.getElementById('commentForm');
-const formSuccess  = document.getElementById('formSuccess');
-const commentsList = document.getElementById('commentsList');
-
-// Track whether we have already added the "recent comments" heading
-let commentsHeadingAdded = false;
+const commentForm = document.getElementById('commentForm');
 
 if (commentForm) {
   commentForm.addEventListener('submit', function (e) {
     e.preventDefault();
 
-    const nameInput    = document.getElementById('commenterName');
-    const bookSelect   = document.getElementById('bookSelect');
+    const nameInput = document.getElementById('commenterName');
+    const bookSelect = document.getElementById('bookSelect');
     const commentInput = document.getElementById('commentText');
 
-    const name    = nameInput.value.trim();
-    const book    = bookSelect.value;
+    const name = nameInput.value.trim();
+    const book = bookSelect.value || 'General message';
     const comment = commentInput.value.trim();
 
-    // Validate required fields (name + comment)
     if (!name || !comment) {
-      nameInput.style.borderColor    = name    ? '' : '#e74c3c';
-      commentInput.style.borderColor = comment ? '' : '#e74c3c';
+      alert('Please enter your name and your comment.');
       return;
     }
 
-    // Reset any error borders
-    nameInput.style.borderColor    = '';
-    commentInput.style.borderColor = '';
+    const plainMessage =
+      `Hello Christelle, I want to leave a reader comment.\n\n` +
+      `Name: ${name}\n` +
+      `Book: ${book}\n` +
+      `Comment: ${comment}`;
 
-    // Format the current date in French
-    const date = new Date().toLocaleDateString('fr-FR', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    });
+    const whatsappNumber = '50937956024';
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(plainMessage)}`;
 
-    // Add "Récents commentaires" heading only once
-    if (!commentsHeadingAdded) {
-      const heading = document.createElement('h3');
-      heading.className = 'comments-heading';
-      heading.textContent = 'Récents commentaires';
-      commentsList.prepend(heading);
-      commentsHeadingAdded = true;
-    }
+    window.open(whatsappUrl, '_blank');
 
-    // Build the new comment card HTML
-    const commentEl = document.createElement('div');
-    commentEl.className = 'comment-item';
-    commentEl.innerHTML = `
-      <div class="comment-meta">
-        <div>
-          <div class="comment-author">${escapeHtml(name)}</div>
-          ${book ? `<div class="comment-book">${escapeHtml(book)}</div>` : ''}
-        </div>
-        <span class="comment-date">${date}</span>
-      </div>
-      <p class="comment-text">"${escapeHtml(comment)}"</p>
-    `;
-
-    // Insert new comment at the top (after the heading)
-    const heading = commentsList.querySelector('.comments-heading');
-    if (heading) {
-      heading.insertAdjacentElement('afterend', commentEl);
-    } else {
-      commentsList.prepend(commentEl);
-    }
-
-    // Clear the form fields
-    nameInput.value    = '';
-    bookSelect.value   = '';
+    nameInput.value = '';
+    bookSelect.value = '';
     commentInput.value = '';
-
-    // Show the success message, then hide it after 4 seconds
-    formSuccess.classList.add('visible');
-    setTimeout(function () {
-      formSuccess.classList.remove('visible');
-    }, 4000);
   });
 }
-
-
 // ---------------------------------------------------------------
 // SECTION 5: UTILITY — HTML ESCAPE
 // Prevents XSS by escaping user-submitted text before inserting
