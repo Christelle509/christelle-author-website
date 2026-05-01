@@ -646,11 +646,21 @@ img {
   justify-content: center;
 }
 
+/* Author initials fallback, only used if you put text inside .about-avatar */
 .about-avatar span {
   font-family: var(--font-serif);
   font-size: 3.5rem;
   font-weight: 700;
   color: color-mix(in srgb, var(--muted-fg) 50%, transparent);
+}
+
+/* Author photo inside the circular À propos frame */
+.about-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
 }
 
 .about-text {
