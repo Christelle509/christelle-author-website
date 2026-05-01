@@ -1,16 +1,535 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
-    <title>Christelle Fabie Joseph — Site Auteure</title>
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<html lang="fr" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Christelle Fabie Joseph — Site Auteure</title>
+
+  <!-- Google Fonts: Playfair Display + Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome 6 (icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Main stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ==================== NAVBAR ==================== -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-inner">
+      <button class="nav-logo" onclick="scrollToSection('accueil')">
+        Christelle Fabie Joseph
+      </button>
+
+      <!-- Desktop navigation links -->
+      <div class="nav-right">
+        <ul class="nav-links">
+          <li><button onclick="scrollToSection('accueil')">Accueil</button></li>
+          <li><button onclick="scrollToSection('livres')">Livres</button></li>
+          <li><button onclick="scrollToSection('a-venir')">À venir</button></li>
+          <li><button onclick="scrollToSection('a-propos')">À propos</button></li>
+          <li><button onclick="scrollToSection('commentaires')">Commentaires</button></li>
+          <li><button onclick="scrollToSection('contact')">Contact</button></li>
+        </ul>
+
+        <!-- Dark/light mode toggle button -->
+        <button class="theme-toggle" id="themeToggle" aria-label="Changer le thème">
+          <i class="fa-solid fa-sun" id="themeIcon"></i>
+        </button>
+      </div>
+
+      <!-- Mobile controls -->
+      <div class="nav-mobile-controls">
+        <button class="theme-toggle" id="themeToggleMobile" aria-label="Changer le thème">
+          <i class="fa-solid fa-sun" id="themeIconMobile"></i>
+        </button>
+        <button class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu">
+          <i class="fa-solid fa-bars" id="menuIcon"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile dropdown menu -->
+    <div class="mobile-menu" id="mobileMenu">
+      <ul>
+        <li><button onclick="scrollToSection('accueil')">Accueil</button></li>
+        <li><button onclick="scrollToSection('livres')">Livres</button></li>
+        <li><button onclick="scrollToSection('a-venir')">À venir</button></li>
+        <li><button onclick="scrollToSection('a-propos')">À propos</button></li>
+        <li><button onclick="scrollToSection('commentaires')">Commentaires</button></li>
+        <li><button onclick="scrollToSection('contact')">Contact</button></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- ==================== HERO SECTION ==================== -->
+    <section id="accueil" class="hero">
+      <div class="hero-bg"></div>
+      <div class="container hero-content">
+        <h1 class="hero-title">
+          Des livres qui touchent le cœur<br />
+          <span class="hero-accent">&amp;</span> réveillent l'âme.
+        </h1>
+        <p class="hero-subtitle">
+          Bienvenue dans l'univers de Christelle Fabie Joseph, un espace où les récits,
+          les réflexions spirituelles et les messages d'amour se rencontrent pour inspirer,
+          consoler et transformer.
+        </p>
+        <div class="hero-buttons">
+          <button class="btn btn-primary" onclick="scrollToSection('livres')">
+            Découvrir les livres
+          </button>
+          <a
+            href="https://wa.me/50937956024?text=Bonjour%20Christelle%2C%20je%20souhaite%20commander%20un%20livre.%20Pouvez-vous%20me%20donner%20les%20d%C3%A9tails%20%3F"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-outline-gold"
+          >
+            Commander sur WhatsApp
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== PUBLISHED BOOKS SECTION ==================== -->
+    <section id="livres" class="section section-card">
+      <div class="container">
+        <div class="section-header">
+          <h2>Livres Publiés</h2>
+          <div class="section-divider divider-gold"></div>
+        </div>
+
+        <div class="books-grid">
+
+          <!-- Book card: Lakou et ses secrets -->
+          <div class="book-card">
+            <div class="book-cover-wrap">
+              <img
+                src="images/lakou-cover.jpeg"
+                alt="Couverture du livre Lakou et ses secrets — Volume 1 : Ressuscite-moi"
+                class="book-cover"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+              />
+              <div class="book-cover-fallback">
+                <span>Lakou et ses secrets — Volume 1 : Ressuscite-moi</span>
+              </div>
+            </div>
+            <div class="book-info">
+              <p class="book-category">Roman haïtien • Mystère • Amour</p>
+              <h3 class="book-title">Lakou et ses secrets — Volume 1 : Ressuscite-moi</h3>
+              <p class="book-desc">
+                Un récit chargé de secrets, de mémoire, d'amour et de destinée dans une Haïti profonde et mystérieuse.
+              </p>
+            </div>
+            <div class="book-buttons">
+              <a
+                href="https://wa.me/50937956024?text=Bonjour%20Christelle%2C%20je%20souhaite%20commander%20ce%20livre.%20Pouvez-vous%20me%20donner%20les%20d%C3%A9tails%20%3F"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-primary btn-full"
+              >
+                Commander sur WhatsApp
+              </a>
+              <a
+                href="https://a.co/d/0eTbz1Yr"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-outline btn-full"
+              >
+                Voir sur Amazon
+              </a>
+            </div>
+          </div>
+
+          <!-- Book card: Tu es plus -->
+          <div class="book-card">
+            <div class="book-cover-wrap">
+              <img
+                src="images/tu-es-plus-cover.jpeg"
+                alt="Couverture du livre Tu es plus"
+                class="book-cover"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+              />
+              <div class="book-cover-fallback">
+                <span>Tu es plus</span>
+              </div>
+            </div>
+            <div class="book-info">
+              <p class="book-category">Spiritualité • Vérité • Transformation</p>
+              <h3 class="book-title">Tu es plus</h3>
+              <p class="book-desc">
+                Un livre inspirant qui rappelle la valeur, l'identité et la force intérieure de chaque lecteur.
+              </p>
+            </div>
+            <div class="book-buttons">
+              <a
+                href="https://wa.me/50937956024?text=Bonjour%20Christelle%2C%20je%20souhaite%20commander%20ce%20livre.%20Pouvez-vous%20me%20donner%20les%20d%C3%A9tails%20%3F"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-primary btn-full"
+              >
+                Commander sur WhatsApp
+              </a>
+              <a
+                href="https://a.co/d/01cICKSk"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-outline btn-full"
+              >
+                Voir sur Amazon
+              </a>
+            </div>
+          </div>
+
+          <!-- Book card: Cher Dieu, je veux un boo -->
+          <div class="book-card">
+            <div class="book-cover-wrap">
+              <img
+                src="images/cher-dieu-boo-cover.jpeg"
+                alt="Couverture du livre Cher Dieu, je veux un boo"
+                class="book-cover"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+              />
+              <div class="book-cover-fallback">
+                <span>Cher Dieu, je veux un boo</span>
+              </div>
+            </div>
+            <div class="book-info">
+              <p class="book-category">Foi • Amour • Identité • Relations</p>
+              <h3 class="book-title">Cher Dieu, je veux un boo</h3>
+              <p class="book-desc">
+                Une réflexion spirituelle et sincère sur l'amour, le désir d'être choisi, la foi et les relations.
+              </p>
+            </div>
+            <div class="book-buttons">
+              <a
+                href="https://wa.me/50937956024?text=Bonjour%20Christelle%2C%20je%20souhaite%20commander%20ce%20livre.%20Pouvez-vous%20me%20donner%20les%20d%C3%A9tails%20%3F"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-primary btn-full"
+              >
+                Commander sur WhatsApp
+              </a>
+              <a
+                href="https://a.co/d/042vlHHI"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-outline btn-full"
+              >
+                Voir sur Amazon
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== COMING SOON SECTION ==================== -->
+    <section id="a-venir" class="section section-bg">
+      <div class="container">
+        <div class="section-header">
+          <h2>À venir</h2>
+          <div class="section-divider divider-burgundy"></div>
+        </div>
+
+        <div class="books-grid">
+          <!-- Coming soon card 1 -->
+          <div class="coming-card">
+            <div class="coming-cover">
+              <i class="fa-solid fa-book-open coming-icon"></i>
+            </div>
+            <div class="coming-info">
+              <h3>Nouveau livre à venir</h3>
+              <p>Un prochain projet sera annoncé bientôt.</p>
+            </div>
+            <div class="coming-footer">
+              <button class="btn btn-secondary btn-full" disabled>Coming Soon</button>
+            </div>
+          </div>
+          <!-- Coming soon card 2 -->
+          <div class="coming-card">
+            <div class="coming-cover">
+              <i class="fa-solid fa-book-open coming-icon"></i>
+            </div>
+            <div class="coming-info">
+              <h3>Nouveau livre à venir</h3>
+              <p>Un prochain projet sera annoncé bientôt.</p>
+            </div>
+            <div class="coming-footer">
+              <button class="btn btn-secondary btn-full" disabled>Coming Soon</button>
+            </div>
+          </div>
+          <!-- Coming soon card 3 -->
+          <div class="coming-card">
+            <div class="coming-cover">
+              <i class="fa-solid fa-book-open coming-icon"></i>
+            </div>
+            <div class="coming-info">
+              <h3>Nouveau livre à venir</h3>
+              <p>Un prochain projet sera annoncé bientôt.</p>
+            </div>
+            <div class="coming-footer">
+              <button class="btn btn-secondary btn-full" disabled>Coming Soon</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== ABOUT SECTION ==================== -->
+    <section id="a-propos" class="section section-card about-section">
+      <div class="about-bg-accent"></div>
+      <div class="container about-inner">
+
+        <!-- Author avatar / initials -->
+        <div class="about-avatar-wrap">
+          <div class="about-avatar-ring">
+            <div class="about-avatar">
+              <span>CFJ</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Author bio text -->
+        <div class="about-text">
+          <h2>À propos</h2>
+          <p>
+            Christelle Fabie Joseph est une auteure haïtienne dont les mots portent une âme.
+            À travers ses écrits, elle explore les profondeurs de la foi, les mystères de l'amour,
+            et la richesse de l'identité haïtienne.
+          </p>
+          <p>
+            Chaque livre qu'elle écrit est une invitation à se retrouver, à s'élever, et à croire
+            en la beauté de son propre parcours. Son univers littéraire est un refuge pour ceux qui
+            cherchent à être touchés, transformés, et inspirés.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== QUOTES SECTION ==================== -->
+    <section class="section quotes-section">
+      <div class="container">
+        <h2 class="quotes-title">Citations de mes livres</h2>
+
+        <div class="quotes-grid">
+
+          <!-- Quote 1: Tu es plus -->
+          <blockquote class="quote-card">
+            <i class="fa-solid fa-quote-left quote-icon"></i>
+            <p>
+              "Dans notre société, on apprend plein de choses à l'école, mais rarement comment vivre.
+              On nous parle peu de notre cœur, de nos désirs, de notre besoin d'amour, d'identité ou
+              de justice. Pourtant, ces besoins sont en nous. Dieu les a placés là. Ils ne sont pas
+              honteux. Mais ils ont besoin d'être compris. Sinon, on cherche à les combler n'importe
+              comment. Et comme avec le mauvais usage d'un médicament, ça peut nous abîmer."
+            </p>
+            <cite>— Tu es plus</cite>
+          </blockquote>
+
+          <!-- Quote 2: Lakou -->
+          <blockquote class="quote-card">
+            <i class="fa-solid fa-quote-left quote-icon"></i>
+            <p>
+              "Elle se tenait là, chaque rayon de soleil caressant ses cheveux, le vent jouant avec
+              quelques mèches rebelles. Ses yeux le cherchaient, immobiles et pourtant pleins d'attente."
+            </p>
+            <cite>— Lakou et ses secrets — Volume 1 : Ressuscite-moi</cite>
+          </blockquote>
+
+          <!-- Quote 3: Cher Dieu -->
+          <blockquote class="quote-card">
+            <i class="fa-solid fa-quote-left quote-icon"></i>
+            <p>
+              "On découvre alors, avec une sorte d'effroi mêlé de trahison, que l'autre ne venait
+              pas seulement mendier un peu d'amour en nous, mais cherchait, à travers nous, à recoudre
+              son existence entière, comme si notre cœur devait porter le poids terrible de ce que sa
+              vie n'avait jamais su tenir."
+            </p>
+            <cite>— Cher Dieu, je veux un boo</cite>
+          </blockquote>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== COMMENTS SECTION ==================== -->
+    <section id="commentaires" class="section section-bg">
+      <div class="container container-narrow">
+        <div class="section-header">
+          <h2>Commentaires des lecteurs</h2>
+          <div class="section-divider divider-gold"></div>
+        </div>
+
+        <!-- Comment submission form -->
+        <div class="comment-form-card">
+          <div class="form-header">
+            <h3>Laissez un mot</h3>
+            <p>Partagez vos impressions sur les livres de Christelle.</p>
+          </div>
+          <form id="commentForm" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="commenterName">Votre nom</label>
+                <input
+                  type="text"
+                  id="commenterName"
+                  placeholder="John Doe"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="bookSelect">Livre concerné</label>
+                <select id="bookSelect">
+                  <option value="">Sélectionnez un livre</option>
+                  <option value="Lakou et ses secrets — Volume 1 : Ressuscite-moi">Lakou et ses secrets — Volume 1 : Ressuscite-moi</option>
+                  <option value="Tu es plus">Tu es plus</option>
+                  <option value="Cher Dieu, je veux un boo">Cher Dieu, je veux un boo</option>
+                  <option value="Autre">Autre message</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="commentText">Votre commentaire</label>
+              <textarea
+                id="commentText"
+                placeholder="Ce livre m'a profondément touché..."
+                rows="4"
+                required
+              ></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">
+              Publier le commentaire
+            </button>
+          </form>
+          <!-- Success notification (hidden by default) -->
+          <div class="form-success" id="formSuccess">
+            <i class="fa-solid fa-circle-check"></i>
+            Merci pour votre commentaire ! Votre message a été ajouté avec succès.
+          </div>
+        </div>
+
+        <!-- Submitted comments list -->
+        <div id="commentsList"></div>
+
+      </div>
+    </section>
+
+    <!-- ==================== SOCIAL MEDIA SECTION ==================== -->
+    <section class="section section-card social-section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Retrouvez-moi</h2>
+          <p class="section-subtitle">Rejoignez la communauté et suivez mon actualité.</p>
+        </div>
+
+        <div class="social-grid">
+          <a
+            href="https://www.instagram.com/christellefabie"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="social-card"
+            aria-label="Instagram"
+          >
+            <i class="fa-brands fa-instagram social-icon"></i>
+            <span>Instagram</span>
+          </a>
+          <a
+            href="https://www.tiktok.com/@christellefabiejoseph"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="social-card"
+            aria-label="TikTok"
+          >
+            <!-- TikTok SVG icon -->
+            <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.77a4.85 4.85 0 0 1-1.01-.08z"/>
+            </svg>
+            <span>TikTok</span>
+          </a>
+          <a
+            href="#"
+            class="social-card"
+            aria-label="Facebook"
+          >
+            <i class="fa-brands fa-facebook social-icon"></i>
+            <span>Facebook</span>
+          </a>
+          <a
+            href="https://youtube.com/@christellefabiejoseph5484"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="social-card"
+            aria-label="YouTube"
+          >
+            <i class="fa-brands fa-youtube social-icon"></i>
+            <span>YouTube</span>
+          </a>
+          <a
+            href="#"
+            class="social-card"
+            aria-label="Amazon"
+          >
+            <i class="fa-brands fa-amazon social-icon"></i>
+            <span>Amazon</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== CONTACT SECTION ==================== -->
+    <section id="contact" class="section contact-section">
+      <div class="contact-overlay"></div>
+      <div class="container container-narrow contact-inner">
+        <h2>Contact &amp; Commandes</h2>
+        <p>
+          Pour des commandes, collaborations, interviews ou invitations,
+          contactez Christelle directement.
+        </p>
+        <a
+          href="https://wa.me/50937956024?text=Bonjour%20Christelle%2C%20je%20souhaite%20vous%20contacter."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-gold-solid"
+        >
+          Contacter sur WhatsApp
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer">
+    <div class="container footer-inner">
+
+      <!-- Footer social icons -->
+      <div class="footer-icons">
+        <a href="https://www.instagram.com/christellefabie" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="#" aria-label="Facebook">
+          <i class="fa-brands fa-facebook"></i>
+        </a>
+        <a href="https://youtube.com/@christellefabiejoseph5484" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+          <i class="fa-brands fa-youtube"></i>
+        </a>
+      </div>
+
+      <div class="footer-divider"></div>
+      <p class="footer-copy">© 2026 Christelle Fabie Joseph. Tous droits réservés.</p>
+    </div>
+  </footer>
+
+  <!-- Main JavaScript file -->
+  <script src="script.js"></script>
+</body>
 </html>
