@@ -109,8 +109,8 @@ function scrollToSection(sectionId) {
   window.scrollTo({ top: top, behavior: 'smooth' });
 }
 // ---------------------------------------------------------------
-// SECTION 4: COMMENT FORM SUBMISSION TO WHATSAPP
-// Opens WhatsApp with the reader's comment prepared.
+// SECTION 4 : ENVOI DU COMMENTAIRE SUR WHATSAPP
+// Ouvre WhatsApp avec le commentaire du lecteur déjà préparé.
 // ---------------------------------------------------------------
 
 const commentForm = document.getElementById('commentForm');
@@ -124,19 +124,19 @@ if (commentForm) {
     const commentInput = document.getElementById('commentText');
 
     const name = nameInput.value.trim();
-    const book = bookSelect.value || 'General message';
+    const book = bookSelect.value || 'Message général';
     const comment = commentInput.value.trim();
 
     if (!name || !comment) {
-      alert('Please enter your name and your comment.');
+      alert('Veuillez entrer votre nom et votre commentaire.');
       return;
     }
 
     const plainMessage =
-      `Hello Christelle, I want to leave a reader comment.\n\n` +
-      `Name: ${name}\n` +
-      `Book: ${book}\n` +
-      `Comment: ${comment}`;
+      `Bonjour Christelle, je souhaite laisser un commentaire de lecteur.\n\n` +
+      `Nom : ${name}\n` +
+      `Livre : ${book}\n` +
+      `Commentaire : ${comment}`;
 
     const whatsappNumber = '50937956024';
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(plainMessage)}`;
